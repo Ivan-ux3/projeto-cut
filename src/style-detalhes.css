@@ -1,0 +1,152 @@
+/* style-detalhes.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-deep: #1A0325;
+    --text-white: #ffffff;
+    --text-gray: #b3b3b3;
+    --yellow: #FFCC00;
+    --pink: #E1007A;
+}
+
+.details-page {
+    background-color: var(--bg-deep);
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+.loading-screen, .error-screen {
+    height: 100vh; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; color: white; background: var(--bg-deep);
+}
+
+/* HEADER */
+.header-detalhes {
+    position: fixed; top: 0; width: 100%; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+/* Logo aumentada para 70px */
+.logo-img { height: 220px; width: auto; }
+
+.search-wrapper { position: relative; }
+.search-wrapper input {
+    background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 8px 40px 8px 15px; color: white; outline: none; width: 220px;
+}
+.icon-right { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+
+/* BACKGROUND */
+.backdrop-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 0;
+}
+
+.backdrop-img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.6; 
+}
+
+.backdrop-img.poster-mode {
+    filter: blur(20px) brightness(0.5);
+    transform: scale(1.1);
+}
+.backdrop-img.scene-mode {
+    filter: brightness(0.7);
+}
+
+.backdrop-gradient {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+    background: linear-gradient(to right, var(--bg-deep) 10%, rgba(26, 3, 37, 0.7) 50%, rgba(26, 3, 37, 0.2) 100%);
+}
+
+/* LAYOUT */
+.content-container {
+    position: relative; z-index: 10;
+    padding-top: 120px; padding-left: 5%; padding-right: 5%;
+    min-height: 100vh; display: flex; align-items: center;
+}
+.content-grid {
+    /* Centraliza verticalmente o poster em relação ao texto */
+    display: flex; align-items: center; gap: 80px; width: 100%; max-width: 1400px; margin: 0 auto;
+}
+
+/* POSTER */
+.poster-col { flex-shrink: 0; }
+
+/* Poster aumentado para 400px */
+.poster-wrapper {
+    position: relative; width: 400px; border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.main-poster { width: 100%; border-radius: 16px; display: block; }
+.play-button {
+    position: absolute; bottom: 20px; right: 20px;
+    width: 70px; height: 70px; border-radius: 50%; background: white;
+    border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.2s;
+}
+.play-button:hover { transform: scale(1.1); }
+
+/* INFO TEXTO */
+.info-col { flex: 1; padding-bottom: 20px; }
+
+.movie-hero-title {
+    font-size: 3rem;
+    font-weight: 600; line-height: 1.1; margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.movie-year { font-weight: 300; opacity: 0.8; font-size: 2.2rem; }
+
+.meta-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 30px;
+    font-size: 1.1rem; color: #ddd; text-transform: uppercase; letter-spacing: 1px;
+}
+.meta-separator { color: var(--pink); font-weight: bold; }
+
+.label-synopsis {
+    font-size: 0.9rem; color: var(--text-gray); margin-bottom: 8px; letter-spacing: 1px;
+}
+.text-synopsis {
+    font-size: 1rem; 
+    line-height: 1.6; 
+    max-width: 650px; 
+    margin-bottom: 40px; 
+    color: #e0e0e0;
+}
+
+/* BADGES E NOTA */
+.bottom-stats { display: flex; align-items: center; gap: 30px; }
+
+.age-badge {
+    width: 55px; height: 55px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.5rem; color: #000;
+    background-color: var(--yellow);
+}
+/* Cores */
+.age-L { background-color: #00AA00; color: white; }
+.age-10 { background-color: #0099FF; color: white; }
+.age-12 { background-color: #FFCC00; color: black; }
+.age-14 { background-color: #FF6600; color: white; }
+.age-16 { background-color: #FF0000; color: white; }
+.age-18 { background-color: #000000; color: white; }
+
+.rating-container { display: flex; flex-direction: column; }
+.label-imdb { font-size: 0.8rem; color: var(--text-gray); margin-bottom: 2px; }
+.stars-row { display: flex; align-items: center; gap: 6px; }
+.rating-number { font-size: 1.4rem; font-weight: 600; }
+
+@media (max-width: 1100px) {
+    .content-grid { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+    .content-container { padding-top: 120px; }
+    .movie-hero-title { font-size: 2.2rem; }
+    .meta-row { justify-content: center; }
+    .bottom-stats { justify-content: center; }
+    .poster-wrapper { width: 280px; margin-bottom: 10px; }
+    .info-col { padding-bottom: 50px; }
+    .logo-img { height: 50px; } /* Logo menor no mobile */
+}

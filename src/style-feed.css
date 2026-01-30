@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-deep: #1A0325;
+    --card-bg: #2b053b;
+    --text-white: #ffffff;
+    --text-gray: #b3b3b3;
+    --pink: #E1007A;
+    --light-purple: #ccaaff;
+}
+
+.feed-container {
+    display: flex;
+    background-color: var(--bg-deep);
+    min-height: 100vh;
+    color: var(--text-white);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 260px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    background-color: transparent;
+    overflow-y: auto;
+}
+
+.sidebar-logo {
+    display: flex;
+    justify-content: flex-start; /* Alinha à esquerda */
+    margin-bottom: 40px;
+}
+
+/* LOGO AUMENTADA AQUI */
+.logo-large { 
+    height: 90px; /* Aumentei bastante para garantir visibilidade */
+    width: auto; 
+}
+
+.sidebar-nav { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+}
+
+.nav-item {
+    display: flex; align-items: center; gap: 15px;
+    color: var(--text-gray); text-decoration: none;
+    font-size: 1.1rem; font-weight: 500;
+    padding: 12px; border-radius: 12px;
+    transition: 0.3s;
+    cursor: pointer; /* Garante mãozinha no hover */
+}
+
+.nav-item:hover, .nav-item.active {
+    color: white; 
+    background-color: rgba(255,255,255,0.1);
+}
+
+.user-mini-profile {
+    margin-top: auto;
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px; background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.profile-name-small { 
+    font-weight: 600; 
+    font-size: 0.85rem; 
+    color: #e0e0e0; 
+    text-transform: capitalize;
+}
+
+.avatar-inicial {
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* --- MAIN FEED --- */
+.feed-main {
+    margin-left: 260px;
+    padding: 40px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.feed-search-bar {
+    display: flex; align-items: center; background-color: var(--card-bg);
+    padding: 10px 20px; border-radius: 30px; margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.1); animation: fadeIn 0.3s ease;
+}
+.feed-search-bar input {
+    flex: 1; background: transparent; border: none; color: white; font-size: 1rem; outline: none; font-family: 'Poppins', sans-serif;
+}
+.feed-search-bar button {
+    background: transparent; border: none; color: var(--text-gray); font-size: 1.2rem; cursor: pointer;
+}
+
+.create-post-card {
+    background-color: var(--card-bg); padding: 25px; border-radius: 24px;
+    margin-bottom: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+.post-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.input-group { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; }
+.autocomplete-container { position: relative; width: 100%; }
+
+.movie-input {
+    background: transparent; border: none; color: white; padding: 10px 0;
+    font-size: 1.1rem; font-weight: 500; outline: none; width: 100%;
+    font-family: 'Poppins', sans-serif; border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+.movie-input:focus { border-bottom: 1px solid var(--light-purple); }
+.movie-input::placeholder { color: #aaa; }
+
+.suggestions-list {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background-color: #3d0a52; border-radius: 10px;
+    max-height: 200px; overflow-y: auto; list-style: none;
+    padding: 0; margin: 5px 0 0 0; box-shadow: 0 5px 20px rgba(0,0,0,0.5); z-index: 1000;
+}
+.suggestions-list li {
+    padding: 12px 15px; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem;
+}
+.suggestions-list li:hover { background-color: var(--light-purple); color: #2b053b; }
+
+.click-outside { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 999; background: transparent; }
+
+.post-input {
+    width: 100%; background: transparent; border: none;
+    color: white; font-size: 1.1rem; font-family: 'Poppins', sans-serif;
+    resize: none; height: 50px; outline: none; margin-bottom: 15px;
+}
+.post-input::placeholder { color: #666; }
+
+.image-preview-box { display: inline-block; position: relative; margin-bottom: 15px; }
+.image-preview-box img { height: 80px; border-radius: 8px; }
+.image-preview-box button {
+    position: absolute; top: -5px; right: -5px; background: red; color: white;
+    border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 0.8rem;
+}
+
+.rating-area { display: flex; align-items: center; margin-bottom: 20px; }
+.star-rating { display: flex; gap: 5px; }
+.post-actions { display: flex; justify-content: space-between; align-items: center; }
+.icons { display: flex; gap: 15px; align-items: center; }
+.icon-btn { background: transparent; border: none; color: var(--text-gray); cursor: pointer; transition: color 0.2s; }
+.icon-btn:hover { color: var(--light-purple); }
+.emoji-popover { position: absolute; top: 40px; left: 0; z-index: 100; box-shadow: 0 10px 40px rgba(0,0,0,0.5); border-radius: 10px; }
+.btn-postar { background-color: var(--light-purple); color: #2b053b; border: none; padding: 8px 25px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+.btn-postar:hover { background-color: white; transform: scale(1.05); }
+
+/* --- REVIEW CARD --- */
+.review-card {
+    background-color: var(--card-bg); border-radius: 24px; padding: 25px;
+    margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.review-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    margin-bottom: 15px; 
+}
+
+.user-info { 
+    display: flex; 
+    gap: 15px; 
+    width: 100%; 
+    align-items: center;
+    justify-content: flex-start!important;
+}
+
+.header-text-col { 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    gap: 4px; 
+}
+
+.top-row-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.user-name { 
+    font-weight: 700; 
+    font-size: 1.05rem; 
+    color: white; 
+    line-height: 1;
+}
+
+.inline-stars {
+    display: flex;
+    align-items: center;
+    margin-top: -2px; 
+}
+
+.bottom-row-info {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+.watched-tag strong { 
+    color: var(--light-purple); 
+    font-weight: 600;
+}
+
+.post-date { 
+    margin-left: 5px;
+    font-size: 0.8rem; 
+    opacity: 0.7; 
+}
+
+.review-text { 
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    margin-bottom: 20px; 
+    color: #eee; 
+    font-style: italic; 
+}
+
+.review-image-container {
+    position: relative; width: 100%; height: 300px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+.review-image { width: 100%; height: 100%; object-fit: cover; }
+.review-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); font-weight: 700; font-size: 1.2rem; }
+
+.btn-like {
+    background: transparent; border: none; color: var(--text-gray); cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 1rem; padding: 5px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.btn-like.liked { color: var(--pink); }
+.btn-like:hover { background: rgba(255, 255, 255, 0.05); }
+
+.post-menu { position: absolute; top: 30px; right: 0; background-color: #2b053b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 50; }
+.menu-item { display: block; width: 100%; text-align: left; padding: 8px 15px; background: transparent; border: none; color: white; cursor: pointer; font-size: 0.9rem; }
+.menu-item:hover { background-color: rgba(255,255,255,0.1); }
+.menu-item.delete { color: #ff4444; }
+
+@media (max-width: 768px) {
+    .sidebar { display: none; } 
+    .feed-main { margin-left: 0; padding: 20px; }
+    .review-image-container { height: 200px; }
+    
+    .top-row-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+    .bottom-row-info {
+        flex-wrap: wrap;
+    }
+}
