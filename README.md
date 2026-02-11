@@ -1,83 +1,174 @@
 # CUT!
 
-Aplicação web desenvolvida em JavaScript que integra funcionalidades de uma
-plataforma de streaming de filmes e séries com características de rede social.
-O sistema permite que usuários visualizem conteúdos, avaliem, escrevam resenhas
-e interajam com outras pessoas a partir de interesses cinematográficos em comum.
+Plataforma web que integra funcionalidades de streaming de filmes e séries com elementos de rede social, permitindo que usuários interajam a partir de seus interesses cinematográficos.
 
-O projeto foi desenvolvido como trabalho acadêmico em grupo e faz parte do meu
-portfólio técnico.
+O sistema possibilita visualizar conteúdos, publicar resenhas, avaliar títulos, curtir comentários e acompanhar um feed social personalizado.
 
-## Funcionalidades
-- Catálogo de filmes e séries
-- Visualização de conteúdos audiovisuais
-- Sistema de avaliações e resenhas
-- Interação entre usuários (curtidas, comentários e feed)
-- Listas personalizadas (ex: “Quero assistir”)
-- Histórico de consumo de conteúdo
-- Upload e exibição de mídias
+Projeto desenvolvido como trabalho acadêmico em grupo e incluído no meu portfólio como aplicação full stack orientada a objetos.
 
-## Conceitos aplicados
-- Levantamento de requisitos funcionais e não funcionais
-- Regras de negócio
-- Arquitetura de software
-- Desenvolvimento full stack
-- Trabalho em equipe
-- Versionamento de código com Git
+---
 
-## Tecnologias utilizadas
-- JavaScript
-- Node.js
-- Express
-- React
-- Vite
-- HTML5
-- CSS3
-- Git e GitHub
+## Visão Geral
 
-## Como executar o projeto
+O CUT! combina:
 
-Clone o repositório, acesse a pasta do projeto e instale as dependências:
+* Catálogo de filmes e séries
+* Sistema de avaliações e comentários
+* Feed social baseado em interações
+* Curtidas em comentários
+* Listas personalizadas
+* Histórico de consumo
+* Upload de imagens
+* Persistência em banco NoSQL (Firebase)
+
+A aplicação foi estruturada utilizando princípios de Programação Orientada a Objetos, separação de responsabilidades e organização em camadas (models, services, database).
+
+---
+
+## Arquitetura
+
+O projeto segue uma organização modular:
+
+* Models → Representação das entidades do domínio
+* Services → Regras de negócio e comunicação com o banco
+* DataBase → Configuração e integração com Firebase
+* Frontend (React + Vite) → Interface do usuário
+* Backend (Node.js / Express) → Servidor da aplicação
+
+### Modelagem Orientada a Objetos
+
+Exemplo de hierarquia:
+
+* Video (classe base)
+
+  * Film
+  * Series
+* Episode
+* User
+
+As classes Film e Series herdam propriedades de Video, aplicando conceito de herança e reutilização de código.
+
+---
+
+## Regras de Negócio Implementadas
+
+* Comentários vinculados a usuários e vídeos via referência no Firebase
+* Sistema de curtidas com arrayUnion e arrayRemove
+* Feed ordenado por data de criação
+* Avaliações opcionais associadas ao comentário
+* Listas personalizadas por usuário
+* Upload de imagem associado ao comentário
+
+---
+
+## Integração com Firebase
+
+O projeto utiliza:
+
+* Firestore para armazenamento de usuários, vídeos e comentários
+* Referências entre documentos
+* Queries com filtros (where)
+* Ordenação com orderBy
+* Manipulação de arrays para sistema de likes
+
+---
+
+## Tecnologias Utilizadas
+
+### Frontend
+
+* React
+* Vite
+* HTML5
+* CSS3
+* JavaScript
+
+### Backend
+
+* Node.js
+* Express
+
+### Banco de Dados
+
+* Firebase Firestore
+
+### Versionamento
+
+* Git
+* GitHub
+
+---
+
+## Como Executar o Projeto
+
+Clone o repositório:
 
 ```bash
 git clone https://github.com/SEU_USUARIO/cut.git
 cd cut
 npm install
 ```
-Execute a aplicação:
 
+Execute o frontend:
+
+```bash
 npm run dev
+```
 
-Caso o backend seja iniciado separadamente:
+Caso o backend seja executado separadamente:
 
+```bash
 node server.js
+```
 
-## Estrutura do projeto
+---
 
+## Estrutura do Projeto
+
+```
 CUT/
-│── server.js           
-│── package.json         
+│── server.js
+│── package.json
 │── src/
-│   ├── components/      
-│   ├── pages/           
-│   ├── services/        
-│   ├── models/          
-│   ├── DataBase/        
-│── public/              
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── models/
+│   ├── DataBase/
+│── public/
 │── README.md
 │── .gitignore
+```
 
-## Autor
+---
 
-Projeto desenvolvido em grupo como trabalho acadêmico no contexto da disciplina
+## Autores
+
+Projeto desenvolvido em grupo como trabalho acadêmico na disciplina de
 Análise e Projeto de Software Orientado a Objetos.
 
-Ivan Francisco Santos da Silva  
-Estudante de Engenharia de Software na Universidade Federal de Mato Grosso do Sul  
-Licenciando em Música pela Faculdade Batista do Seminário do Sul  
+Ivan Francisco Santos da Silva
 
-Laryssa Bernardo Aderno  
+Estudante de Engenharia de Software – UFMS
 
-Giovanna Carla Andrade da Silva  
+Licenciando em Música - FABAT
+
+Laryssa Bernardo Aderno
+
+Giovanna Carla Andrade da Silva
 
 Laura Santa Cruz Rodrigues
+
+---
+
+## Objetivo no Portfólio
+
+Este projeto demonstra:
+
+* Aplicação prática de Programação Orientada a Objetos em JavaScript
+* Organização em camadas
+* Integração com banco NoSQL
+* Implementação de regras de negócio
+* Desenvolvimento full stack
+* Trabalho colaborativo
+* Versionamento profissional
